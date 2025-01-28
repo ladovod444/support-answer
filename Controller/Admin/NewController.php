@@ -33,25 +33,29 @@ use BaksDev\Support\Answer\UseCase\Admin\NewEdit\SupportAnswerForm;
 use BaksDev\Support\Answer\UseCase\Admin\NewEdit\SupportAnswerHandler;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Attribute\AsController;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[AsController]
 #[RoleSecurity('ROLE_SUPPORT_ADD')]
 final class NewController extends AbstractController
 {
-    #[Route('/admin/support/answer/new/{id}', name: 'admin.newedit.new',  defaults: ['id' => null], methods: ['GET', 'POST'])]
+    #[Route('/admin/support/answer/new/{id}', name: 'admin.newedit.new', defaults: ['id' => null], methods: ['GET', 'POST'])]
     public function news(
         Request $request,
         SupportAnswerHandler $supportAnswerHandler,
     ): Response
     {
-
         $SupportAnswerDTO = new SupportAnswerDTO();
 
         /** Форма */
-        $form = $this->createForm(SupportAnswerForm::class, $SupportAnswerDTO);
-        $form->handleRequest($request);
+        $form = $this
+            ->createForm(
+                type: SupportAnswerForm::class,
+                data: $SupportAnswerDTO,
+                options: ['action' => $this->generateUrl('support-answer:admin.newedit.new'),]
+            )
+            ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
@@ -61,9 +65,9 @@ final class NewController extends AbstractController
 
             $this->addFlash
             (
-                'admin.page.new',
-                $handle instanceof SupportAnswer  ? 'admin.success.new' : 'admin.danger.new',
-                'admin.support.answer',
+                'page.new',
+                $handle instanceof SupportAnswer ? 'success.new' : 'danger.new',
+                'support-answer.admin',
                 $handle
             );
 

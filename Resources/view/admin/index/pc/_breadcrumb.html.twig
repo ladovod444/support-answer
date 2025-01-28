@@ -1,4 +1,4 @@
-{% trans_default_domain('admin.support.answer') %}
+{% trans_default_domain('support-answer.admin') %}
 
 <nav class="small" style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
     <ol class="breadcrumb small opacity-75">
@@ -33,11 +33,20 @@
             </a>
         </li>
 
+        <li class="breadcrumb-item">
+            <a href="{{ path('support:admin.index') }}"
+               class="text-decoration-none"
+               aria-label="{{ 'breadcrumb.index'|trans({}, 'support.admin') }}"
+               title="{{ 'breadcrumb.index'|trans({}, 'support.admin') }}">
+                {{ 'breadcrumb.index'|trans({}, 'support.admin') }}
+            </a>
+        </li>
+
 
         <li class="breadcrumb-item active" aria-current="page"
-            aria-label="{{ 'admin.breadcrumb.index'|trans }}"
-            title="{{ 'admin.breadcrumb.index'|trans }}">
-            {{ 'admin.breadcrumb.index'|trans }}
+            aria-label="{{ 'breadcrumb.index'|trans }}"
+            title="{{ 'breadcrumb.index'|trans }}">
+            {{ 'breadcrumb.index'|trans }}
 
         </li>
     </ol>

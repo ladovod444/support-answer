@@ -32,6 +32,7 @@ use BaksDev\Users\Profile\TypeProfile\Entity\Info\TypeProfileInfo;
 use BaksDev\Users\Profile\TypeProfile\Entity\Trans\TypeProfileTrans;
 use BaksDev\Users\Profile\TypeProfile\Entity\TypeProfile;
 use BaksDev\Users\Profile\TypeProfile\Type\Id\TypeProfileUid;
+use Doctrine\DBAL\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -47,7 +48,7 @@ final class UserProfileTypeRepository implements UserProfileTypeInterface
 
     /**
      * @return array
-     * @throws \Doctrine\DBAL\Exception
+     * @throws Exception
      *
      */
     public function findUserTypeProfiles(bool $addProfileNotSelected = true): array
@@ -105,7 +106,7 @@ final class UserProfileTypeRepository implements UserProfileTypeInterface
          */
         if($addProfileNotSelected)
         {
-            array_unshift($results, new TypeProfileUid(TypeProfileUid::TEST, $this->translator->trans('admin.filter.unchosen_profile', domain: 'admin.support.answer'), null));
+            array_unshift($results, new TypeProfileUid(TypeProfileUid::TEST, $this->translator->trans('filter.unchosen_profile', domain: 'support-answer.admin'), null));
         }
 
         return $results;

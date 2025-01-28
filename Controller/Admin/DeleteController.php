@@ -29,8 +29,8 @@ use BaksDev\Core\Controller\AbstractController;
 use BaksDev\Core\Listeners\Event\Security\RoleSecurity;
 use BaksDev\Support\Answer\Entity\SupportAnswer;
 use BaksDev\Support\Answer\UseCase\Admin\Delete\SupportAnswerDeleteDTO;
-use BaksDev\Support\Answer\UseCase\Admin\Delete\SupportAnswerDeleteHandler;
 use BaksDev\Support\Answer\UseCase\Admin\Delete\SupportAnswerDeleteForm;
+use BaksDev\Support\Answer\UseCase\Admin\Delete\SupportAnswerDeleteHandler;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -68,9 +68,9 @@ final class DeleteController extends AbstractController
             $handle = $SupportAnswerDeleteHandler->handle($SupportAnswerDeleteDTO);
 
             $this->addFlash(
-                'admin.page.delete',
-                $handle instanceof SupportAnswer ? 'admin.success.delete' : 'admin.danger.delete',
-                'admin.support.answer',
+                'page.delete',
+                $handle instanceof SupportAnswer ? 'success.delete' : 'danger.delete',
+                'support-answer.admin',
                 $handle
             );
 

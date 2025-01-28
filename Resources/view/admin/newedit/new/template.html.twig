@@ -1,11 +1,11 @@
-{% trans_default_domain('admin.support.answer') %}
+{% trans_default_domain('support-answer.admin') %}
 
 {# ---- ШАБЛОН ------------------------------------------------------------ #}
 {% extends Template('/admin/base.html.twig') %}
 
 {% block title %}
     {# Добавить ответ #}
-    {{ 'admin.page.new'|trans }}
+    {{ 'admin.new'|trans }}
 {% endblock %}
 
 
@@ -23,6 +23,7 @@
 {% endblock %}
 
 
+{#
 {% block javascript %}
 <script nonce='{{ csp_nonce() }}' async data-src="/assets/plugins/ckeditor/classic.min.js?v={{ version }}"
             class='lazy'></script>
@@ -40,3 +41,4 @@
     <script nonce='{{ csp_nonce() }}' async data-src='/assets/js/image.input.min.js?v={{ version }}'
             class='lazy'></script>
 {% endblock %}
+#}

@@ -47,15 +47,23 @@ final class EditController extends AbstractController
     ): Response
     {
 
-        $SupportAnswerDTO = new SupportAnswerDTO();
-        $SupportAnswerDTO->setId($SupportAnswer->getId())
+        $SupportAnswerDTO = new SupportAnswerDTO()
+            ->setId($SupportAnswer->getId())
             ->setTitle($SupportAnswer->getTitle())
             ->setType($SupportAnswer->getType())
             ->setContent($SupportAnswer->getContent());
 
         /** Форма */
-        $form = $this->createForm(SupportAnswerForm::class, $SupportAnswerDTO);
-        $form->handleRequest($request);
+        $form = $this
+            ->createForm(
+                type: SupportAnswerForm::class,
+                data: $SupportAnswerDTO,
+                options: ['action' => $this->generateUrl(
+                    route: 'support-answer:admin.newedit.edit',
+                    parameters: ['id' => $SupportAnswer->getId()]
+                ),]
+            )
+            ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
@@ -64,9 +72,9 @@ final class EditController extends AbstractController
             $handle = $supportAnswerHandler->handle($SupportAnswerDTO);
 
             $this->addFlash(
-                'admin.page.edit',
-                $handle instanceof SupportAnswer ? 'admin.success.edit' : 'admin.danger.edit',
-                'admin.support.answer',
+                'page.edit',
+                $handle instanceof SupportAnswer ? 'success.edit' : 'danger.edit',
+                'support-answer.admin',
                 $handle
             );
 

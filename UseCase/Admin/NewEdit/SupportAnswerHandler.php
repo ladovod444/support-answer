@@ -31,13 +31,12 @@ use BaksDev\Support\Answer\Messenger\SupportAnswerMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-final class SupportAnswerHandler
+final readonly class SupportAnswerHandler
 {
-
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
-        private readonly MessageDispatchInterface $messageDispatch,
-        private readonly ValidatorInterface $validator
+        private EntityManagerInterface $entityManager,
+        private MessageDispatchInterface $messageDispatch,
+        private ValidatorInterface $validator
     ) {}
 
     public function handle(SupportAnswerDTO $command): bool|string|SupportAnswer

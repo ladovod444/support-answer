@@ -1,0 +1,41 @@
+page:
+  index: 'Answers'
+  new: 'Add answer'
+  edit: 'Edit answer'
+  delete: 'Delete answers'
+
+breadcrumb:
+  index: 'Answers'
+  new: 'Add answer'
+  edit: 'Edit answer'
+  delete: 'Delete a answer'
+
+filter:
+  unchosen_profile: 'Profile not specified'
+
+answers:
+  title:
+    has_answers: 'Answers'
+    no_answers: 'There are no answer options added for this profile type'
+
+form:
+  label:
+    trans:
+      name: 'Answer name'
+    url: 'Answer symbol code'
+success:
+  new: 'Answer added successfully'
+  update: 'Answer updated successfully'
+  delete: 'Answer successfully removed to cart'
+  restore: 'The answer was successfully restored'
+danger:
+  new: '%s: Error adding answer'
+  update: '%s: Error updating answer'
+  delete: '%s: Error deleting answer'
+  restore: '%s: Error while restoring answer'
+#form:
+#  delete:
+#    h4: 'Вы уверены, что желаете удалить тикет?'
+#  closed:
+#    h4: 'Вы уверены, что желаете закрыть тикет?'
+#    content: Убедитесь, что выбран именно тот тикет, который нужно закрыть, и нажмите Закрыть. Если вы не желаете закрывать выбранный тикет, нажмите кнопку Отмена

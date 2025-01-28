@@ -1,25 +1,9 @@
-{% trans_default_domain('admin.support.answer') %}
+{% trans_default_domain('support-answer.admin') %}
 
 <tr class="vertical-middle" id="{{ item.id }}">
     <td class="text-nowrap">
         {# Пользовательское меню #}
         {{ include(_self|replace({ "card.html.twig": "_usecase.html.twig" })) }}
-    </td>
-
-    {# Заголовок ответа #}
-    <td class="w-25">
-        <a
-                class="text-decoration-none offcanvas-link "
-                data-href="{{ path('support:admin.detail', { id: item.id }) }}"
-                data-bs-toggle="#offcanvas"
-                data-bs-target="#offcanvas"
-                role="button"
-                aria-controls="offcanvas"
-        >
-            <span class="d-inline-block text-truncate  align-middle" style="max-width: 150px;">
-                {{ item.title|raw }}
-            </span>
-        </a>
     </td>
 
     {# Тип профиля #}
@@ -29,17 +13,32 @@
                   style="max-width: 150px;">
                 {% if item.name %}
                     {{ item.name }}
-                    {% else %}
-                    {{ 'admin.filter.unchosen_profile'|trans }}
+                {% else %}
+                    {{ 'filter.unchosen_profile'|trans }}
                 {% endif %}
             </span>
         </div>
     </td>
 
+    {# Заголовок ответа #}
+    <td style="min-width: 350px;">
+        <a
+                class="btn btn-sm btn-link text-decoration-none disabled"
+                href="{{ path('support-answer:admin.newedit.edit', { id: item.id }) }}"
+                data-bs-toggle="modal"
+                data-bs-target="#modal"
+
+        >
+            <span class="d-inline-block text-truncate  align-middle" style="max-width: 350px;">
+                {{ item.title|raw }}
+            </span>
+        </a>
+    </td>
+
     {# Содержимое ответа #}
-    <td class="w-25">
-        <span class="d-inline-block text-truncate  align-middle"
-              style="max-width: 250px;">
+    <td class="w-100">
+        <span class="d-inline-block text-truncate align-middle"
+              style="max-width: 600px;">
             {{ item.content|striptags }}
         </span>
     </td>

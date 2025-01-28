@@ -42,8 +42,10 @@ final class SupportAnswerForm extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('title', TextType::class, ['required' => true])
+        $builder
+            ->add('title', TextType::class, ['required' => true])
             ->add('content', TextareaType::class, ['required' => true]);
+
         $builder->add('type', ChoiceType::class, [
                 'choices' => $this->profileTypeRepository->findUserTypeProfiles(false), // все типы профили
                 'choice_value' => 'value',

@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 namespace BaksDev\Support\Answer\Form\Admin\Index;
 
+use BaksDev\Support\Answer\Repository\SupportAnswer\SupportAnswerRepository;
 use BaksDev\Support\Answer\Repository\UserProfileType\UserProfileTypeRepository;
 use BaksDev\Users\Profile\TypeProfile\Type\Id\Choice\Collection\TypeProfileInterface;
 use BaksDev\Users\Profile\TypeProfile\Type\Id\TypeProfileUid;
@@ -36,7 +37,6 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use BaksDev\Support\Answer\Repository\SupportAnswer\SupportAnswerRepository;
 
 final class SupportAnswerTypeProfileFilterForm extends AbstractType
 {
@@ -60,7 +60,7 @@ final class SupportAnswerTypeProfileFilterForm extends AbstractType
             'choice_value' => 'value',
             'choice_label' => 'option',
             'label' => false,
-            'translation_domain' => 'admin.support.answer',
+            'translation_domain' => 'support-answer.admin',
         ]);
 
         /**
